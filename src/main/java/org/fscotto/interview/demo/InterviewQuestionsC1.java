@@ -1,19 +1,17 @@
 package org.fscotto.interview.demo;
 
-import java.util.*;
-
 public class InterviewQuestionsC1 {
 
-    public static boolean isUniqueChars(final String str) {
-        if (str == null || "".equals(str))
+    public static boolean isUniqueChars(final String s) {
+        if (s == null || "".equals(s))
             return false;
 
-        if (str.length() > 128)
+        if (s.length() > 128)
             return false;
 
         final boolean[] charSet = new boolean[128];
-        for (int i = 0; i < str.length(); ++i) {
-            int val = str.charAt(i);
+        for (int i = 0; i < s.length(); ++i) {
+            int val = s.charAt(i);
             if (charSet[val])
                 return false;
             charSet[val] = true;
@@ -39,33 +37,38 @@ public class InterviewQuestionsC1 {
         return true;
     }
 
-    public static void replaceSpaces(char[] str, int trueLength) {
+    public static void replaceSpaces(char[] chars, int trueLength) {
         int spaceCount = 0;
         for (int i = 0; i < trueLength; i++) {
-            if (str[i] == ' ') {
+            if (chars[i] == ' ') {
                 spaceCount++;
             }
         }
 
         int index = trueLength + spaceCount * 2;
-        if (trueLength < str.length)
-            str[trueLength] = '\0';
+        if (trueLength < chars.length)
+            chars[trueLength] = '\0';
         for (int i = trueLength - 1; i >= 0; --i) {
-            if (str[i] == ' ') {
-                str[index - 1] = '0';
-                str[index - 2] = '2';
-                str[index - 3] = '%';
+            if (chars[i] == ' ') {
+                chars[index - 1] = '0';
+                chars[index - 2] = '2';
+                chars[index - 3] = '%';
                 index -= 3;
             } else {
-                str[index - 1] = str[i];
+                chars[index - 1] = chars[i];
                 index--;
             }
         }
     }
 
-    public static boolean palindrome(String str) {
-        
-        return false;
+    public static boolean palindrome(String s) {
+        final String str = s.toLowerCase();
+        for (int i = 0, j = str.length() - 1; i < j; i++, j--) {
+            if (str.charAt(i) != str.charAt(j)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

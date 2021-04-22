@@ -42,6 +42,12 @@ class InterviewQuestionsC1Test {
         assertEquals("Mr%20John%20Smith", new String(str));
     }
 
-
+    @Test
+    void palindromeTests() {
+        assertTrue(InterviewQuestionsC1.palindrome("anna"));
+        assertTrue(InterviewQuestionsC1.palindrome("radar"));
+        assertTrue(InterviewQuestionsC1.palindrome("level"));
+        assertFalse(InterviewQuestionsC1.palindrome("dog"));
+    }
 
 }
